@@ -36,9 +36,12 @@ Start the server script and check for errors.
 Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 
 ## PROGRAM:
+![Screenshot 2025-04-08 220842](https://github.com/user-attachments/assets/3c5d99ac-0c50-4f04-8c69-f71600412f4c)
+
 
 
 ## OUTPUT:
+![Screenshot 2025-04-08 220751](https://github.com/user-attachments/assets/052d5f8f-c6ca-473a-af2c-ecb4f0b0f6b0)
 
 
 ## RESULT:
