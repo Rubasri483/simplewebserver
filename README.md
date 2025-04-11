@@ -36,10 +36,10 @@ Start the server script and check for errors.
 Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 
 ## PROGRAM:
-          from http.server import HTTPServer, BaseHTTPRequestHandler
-           content = """
-          <html>
-          <head>
+from http.server import HTTPServer, BaseHTTPRequestHandler
+ content = """
+ <html>
+ <head>
      <h1 style="font-family: Arial, sans-serif; color: brown; text-align: center;"><b>LIST OF PROTOCOLS</b></h1>
      <h1 style="font-family: Arial, sans-serif; color: black; text-align: center; font-size: 18px;">
          NAME: RUBASRI.R<br> 
@@ -47,15 +47,16 @@ Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
      </h1>
      
      <title>PROTOCOLS</title>
-     </head>
-     <body>
+ </head>
+ <body>
      <h1 style="font-family: Arial, sans-serif; font-style: italic; text-decoration: underline;text-align: center;">
          APPLICATION LAYER
      </h1>
-     
-     <div style="text-align: center;">
-         <ul style="list-style-type: none; padding-left: 0; font-size: 20px;font-family: 'Open Sans', sans-serif;">
-             <li>&#8594 HTTP: Hypertext Transfer Protocol</li>
+    
+     <h1><u>APPLICATION LAYER</h1></u>
+     <div>
+         <ul>
+             <li>&#8594; HTTP: Hypertext Transfer Protocol</li>
              <li>&#8594; FTP: File Transfer Protocol</li>
              <li>&#8594; SMTP: Simple Mail Transfer Protocol</li>
              <li>&#8594; DNS: Domain Name System</li>
@@ -63,13 +64,13 @@ Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
              <li>&#8594; SNMP: Simple Network Management Protocol</li>
          </ul>
      </div>
-     <h1 style="font-family: Arial, sans-serif; font-style: italic; text-decoration: underline;text-align: center;">
-        Transport layer
-    </h1>
-    <div style="text-align: center;">
-     <ul style="list-style-type: none; padding-left: 0; font-size: 20px;font-family: 'Open Sans', sans-serif;">
-        <li>&#8594; TCP:Transmission control protocol</li>
-        <li>&#8594; UDP:User datagram protocol</li> 
+     
+     <h1><u>Transport Layer</h1></u>
+     <div>
+         <ul>
+            <li>&#8594; TCP: Transmission Control Protocol</li>
+            <li>&#8594; UDP: User Datagram Protocol</li>
+         </ul>
      </div>
      <h1 style="font-family: Arial, sans-serif; font-style: italic; text-decoration: underline;text-align: center;">
         Internet layer
@@ -93,28 +94,69 @@ Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
      
      
      
-         </body>
-         </html>
-         """
-         class myhandler(BaseHTTPRequestHandler):
-         def do_GET(self):
+ </body>
+ </html>
+ """
+ class myhandler(BaseHTTPRequestHandler):
+     def do_GET(self):
          print("request received")
          self.send_response(200)
          self.send_header('content-type', 'text/html; charset=utf-8')
          self.end_headers()
          self.wfile.write(content.encode())
-          server_address = ('',8000)
+ server_address = ('',8000)
+ httpd = HTTPServer(server_address,myhandler)
+ print("my webserver is running...")
+ httpd.serve_forever()
+
+         from http.server import HTTPServer, BaseHTTPRequestHandler
+         content = """
+         <html>
+         <head>
+         <h1 style="font-family: Arial, sans-serif; color: brown; text-align: center;"><b>LIST OF PROTOCOLS</b></h1>
+         <h1 style="font-family: Arial, sans-serif; color: black; text-align: center; font-size: 18px;">
+         NAME: RUBASRI.R<br> 
+         REF NO: 212224240139
+         </h1>
+     
+        <title>TCP/IP Protocol Suite</title>
+        </head>
+        <body>
+        <h1 style="font-family: Arial, sans-serif; font-style: italic; text-decoration: underline;text-align: center;">
+         TCP/IP Protocol Suite
+        </h1>
+     
+     <div style="text-align: center;">
+         <ul style="list-style-type: none; padding-left: 0; font-size: 20px;font-family: 'Open Sans', sans-serif;">
+             <li>&#8594; HTTP: Hypertext Transfer Protocol</li>
+             <li>&#8594; FTP: File Transfer Protocol</li>
+             <li>&#8594; SMTP: Simple Mail Transfer Protocol</li>
+             <li>&#8594; DNS: Domain Name System</li>
+             <li>&#8594; Telnet: Telecommunications Network</li>
+             <li>&#8594; SNMP: Simple Network Management Protocol</li>
+         </ul>
+     </div>    
+    </body>
+        </html>
+         """
+          class myhandler(BaseHTTPRequestHandler):
+          def do_GET(self):
+          print("request received")
+          self.send_response(200)
+          self.send_header('content-type', 'text/html; charset=utf-8')
+          self.end_headers()
+          self.wfile.write(content.encode())
+         server_address = ('',8000)
          httpd = HTTPServer(server_address,myhandler)
-          print("my webserver is running...")
+         print("my webserver is running...")
          httpd.serve_forever()
 
 
 
 ## OUTPUT:
+![alt text](<Screenshot 2025-04-08 220842.png>)
+
 ![alt text](<Screenshot 2025-04-10 201123.png>)
-
-![Screenshot 2025-04-08 220842](https://github.com/user-attachments/assets/994061aa-01e8-4195-af5c-531a924fb90c)
-
 
 
 
