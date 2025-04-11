@@ -36,14 +36,14 @@ Start the server script and check for errors.
 Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 
 ## PROGRAM:
-from http.server import HTTPServer, BaseHTTPRequestHandler
+      from http.server import HTTPServer, BaseHTTPRequestHandler
 
-content = """
-<html>
- <head>
+      content = """
+      <html>
+      <head>
      <title>PROTOCOLS</title>
- </head>
- <body>
+     </head>
+     <body>
     <center><h1><b><u><font face="Arial"><font color= brown>LIST OF PROTOCOLS</u></b></h1></center></font></font>
      <h1>
         <center><i><small>    NAME: RUBASRI.R<br> 
@@ -89,11 +89,11 @@ content = """
          </ul>
      </div>
   
- </body>
-</html>
-"""
+    </body>
+    </html>
+    """
 
-class myhandler(BaseHTTPRequestHandler):
+    class myhandler(BaseHTTPRequestHandler):
     def do_GET(self):
         print("Request received")
         self.send_response(200)
@@ -101,30 +101,20 @@ class myhandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(content.encode())
 
-server_address = ('', 8000)
-httpd = HTTPServer(server_address, myhandler)
-print("My webserver is running...")
-httpd.serve_forever()
+     server_address = ('', 8000)
+     httpd = HTTPServer(server_address, myhandler)
+      print("My webserver is running...")
+     httpd.serve_forever()
 
- """
- class myhandler(BaseHTTPRequestHandler):
-     def do_GET(self):
-         print("request received")
-         self.send_response(200)
-         self.send_header('content-type', 'text/html; charset=utf-8')
-         self.end_headers()
-         self.wfile.write(content.encode())
- server_address = ('',8000)
- httpd = HTTPServer(server_address,myhandler)
- print("my webserver is running...")
- httpd.serve_forever()
 
          
 
 ## OUTPUT:
 ![alt text](<Screenshot 2025-04-08 220842.png>)
 
-![alt text](<Screenshot 2025-04-10 201123.png>)
+![Screenshot 2025-04-11 104210](https://github.com/user-attachments/assets/4ada84fb-8225-449b-a065-0b7ce101cecd)
+
+
 
 
 
