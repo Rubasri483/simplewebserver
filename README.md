@@ -37,20 +37,17 @@ Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 
 ## PROGRAM:
 from http.server import HTTPServer, BaseHTTPRequestHandler
- content = """
- <html>
+
+content = """
+<html>
  <head>
-     <h1 style="font-family: Arial, sans-serif; color: brown; text-align: center;"><b>LIST OF PROTOCOLS</b></h1>
-     <h1 style="font-family: Arial, sans-serif; color: black; text-align: center; font-size: 18px;">
-         NAME: RUBASRI.R<br> 
-         REF NO: 212224240139
-     </h1>
-     
      <title>PROTOCOLS</title>
  </head>
  <body>
-     <h1 style="font-family: Arial, sans-serif; font-style: italic; text-decoration: underline;text-align: center;">
-         APPLICATION LAYER
+    <center><h1><b><u><font face="Arial"><font color= brown>LIST OF PROTOCOLS</u></b></h1></center></font></font>
+     <h1>
+        <center><i><small>    NAME: RUBASRI.R<br> 
+         REF NO: 212224240139</center></i></small>
      </h1>
     
      <h1><u>APPLICATION LAYER</h1></u>
@@ -72,30 +69,43 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
             <li>&#8594; UDP: User Datagram Protocol</li>
          </ul>
      </div>
-     <h1 style="font-family: Arial, sans-serif; font-style: italic; text-decoration: underline;text-align: center;">
-        Internet layer
-    </h1>
-    <div style="text-align: center;">
-        <ul style="list-style-type: none; padding-left: 0; font-size: 20px;font-family: 'Open Sans', sans-serif;">
-            <li>&#8594; ICMP: Internet Control Message Protocol</li>
-            <li>&#8594; IGMP: Internet Group Management Protocol</li>
-            <li>&#8594; IPV4: Internet Protocol Version 4</li>
-            <li>&#8594; IPV6: Internet Protocol Version 6</li>
-        </div>
-        <h1 style="font-family: Arial, sans-serif; font-style: italic; text-decoration: underline;text-align: center;">
-           Network Access Layer
-        </h1>
-        <div style="text-align: center;">
-            <ul style="list-style-type: none; padding-left: 0; font-size: 20px;font-family: 'Open Sans', sans-serif;">
-                <li>&#8594; MAC/Ethernet</li>
-                <li>&#8594; FDDI</li>
-                <li>&#8594; Frame Relay</li>
-            </div>
      
+     <h1><u>Internet Layer</h1></u>
+     <div>
+         <ul>
+             <li>&#8594; ICMP: Internet Control Message Protocol</li>
+             <li>&#8594; IGMP: Internet Group Management Protocol</li>
+             <li>&#8594; IPV4: Internet Protocol Version 4</li>
+             <li>&#8594; IPV6: Internet Protocol Version 6</li>
+         </ul>
+     </div>
      
-     
+     <h1><u>Network Access Layer</h1></u>
+     <div>
+         <ul>
+             <li>&#8594; MAC/Ethernet</li>
+             <li>&#8594; FDDI</li>
+             <li>&#8594; Frame Relay</li>
+         </ul>
+     </div>
+  
  </body>
- </html>
+</html>
+"""
+
+class myhandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print("Request received")
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+
+server_address = ('', 8000)
+httpd = HTTPServer(server_address, myhandler)
+print("My webserver is running...")
+httpd.serve_forever()
+
  """
  class myhandler(BaseHTTPRequestHandler):
      def do_GET(self):
@@ -109,49 +119,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
  print("my webserver is running...")
  httpd.serve_forever()
 
-         from http.server import HTTPServer, BaseHTTPRequestHandler
-         content = """
-         <html>
-         <head>
-         <h1 style="font-family: Arial, sans-serif; color: brown; text-align: center;"><b>LIST OF PROTOCOLS</b></h1>
-         <h1 style="font-family: Arial, sans-serif; color: black; text-align: center; font-size: 18px;">
-         NAME: RUBASRI.R<br> 
-         REF NO: 212224240139
-         </h1>
-     
-        <title>TCP/IP Protocol Suite</title>
-        </head>
-        <body>
-        <h1 style="font-family: Arial, sans-serif; font-style: italic; text-decoration: underline;text-align: center;">
-         TCP/IP Protocol Suite
-        </h1>
-     
-     <div style="text-align: center;">
-         <ul style="list-style-type: none; padding-left: 0; font-size: 20px;font-family: 'Open Sans', sans-serif;">
-             <li>&#8594; HTTP: Hypertext Transfer Protocol</li>
-             <li>&#8594; FTP: File Transfer Protocol</li>
-             <li>&#8594; SMTP: Simple Mail Transfer Protocol</li>
-             <li>&#8594; DNS: Domain Name System</li>
-             <li>&#8594; Telnet: Telecommunications Network</li>
-             <li>&#8594; SNMP: Simple Network Management Protocol</li>
-         </ul>
-     </div>    
-    </body>
-        </html>
-         """
-          class myhandler(BaseHTTPRequestHandler):
-          def do_GET(self):
-          print("request received")
-          self.send_response(200)
-          self.send_header('content-type', 'text/html; charset=utf-8')
-          self.end_headers()
-          self.wfile.write(content.encode())
-         server_address = ('',8000)
-         httpd = HTTPServer(server_address,myhandler)
-         print("my webserver is running...")
-         httpd.serve_forever()
-
-
+         
 
 ## OUTPUT:
 ![alt text](<Screenshot 2025-04-08 220842.png>)
